@@ -3,7 +3,6 @@ set -e
 
 CONFIG_PATH=/data/options.json
 
-ALIAS="$(jq --raw-output '.alias' ${CONFIG_PATH})"
 PRIVATE_KEY="$(jq --raw-output '.private_key' ${CONFIG_PATH})"
 SERVER="$(jq --raw-output '.server' ${CONFIG_PATH})"
 PORT1FROM="$(jq --raw-output '.port1from' ${CONFIG_PATH})"
@@ -38,7 +37,7 @@ then
     PORT3=" -R  ${PORT3TO}:localhost:${PORT3FROM}"
 fi
 
-CMD="/bin/bash -c 'sleep ${RETRY_TIME} && ssh ${IDENTITY} -tt -o ExitOnForwardFailure=yes -o StrictHostKeyChecking=no -o ServerAliveInterval=10 -o ServerAliveCountMax=3 ${PORT1}${PORT2}${PORT3} ${ALIAS}@${SERVER}'"
+CMD="/bin/bash -c 'sleep ${RETRY_TIME} && ssh ${IDENTITY} -tt -o ExitOnForwardFailure=yes -o StrictHostKeyChecking=no -o ServerAliveInterval=10 -o ServerAliveCountMax=3 ${PORT1}${PORT2}${PORT3} ${SERVER}'"
 
 echo "Running '${CMD}' through supervisor!"
 
