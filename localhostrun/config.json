@@ -9,7 +9,6 @@
   "boot": "auto",
   "host_network": true,
   "options": {
-    "alias": "foo",
     "private_key": "",
     "server": "ssh.localhost.run",
     "port1from": 8123,
@@ -21,7 +20,6 @@
     "retry_time": 60
   },
   "schema": {
-    "alias": "str",
     "private_key": "str",
     "server": "str",
     "port1from": "int",
